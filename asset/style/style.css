@@ -1,0 +1,197 @@
+/*******************************************************
+GENERAUX
+*******************************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    background-image: url(../img/background.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*******************************************************
+EN TETE
+*******************************************************/
+
+.header-site {
+    height: 15vh;
+    background-color: rgba(255, 30, 0, 0.8);
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+}
+
+.header-title {
+    color: rgba(255, 255, 255, 1);
+    margin: 30px;
+    width: 33%;
+}
+
+.header-nav {
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    transform: translate(-100%, -100%);
+    top: 100%;
+    left: 98%;
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-list-item {
+    margin: 10px;
+    background-color: rgba(0, 0, 255, 0.5);
+    border-radius: 20px;
+    padding: 10px;
+    list-style: none;
+}
+
+.nav-list-item-link {
+    color: rgba(255, 255, 255, 1);
+}
+
+/*******************************************************
+CORPS
+*******************************************************/
+
+main {
+    width: 50%;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1%;
+}
+
+/*************** Titre de la page ******************/
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(255, 81, 81);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/*************** Calculatrice *************************/
+
+#calculator-container {
+  background-color: rgb(122, 120, 255); /* couleur de la calculatrice */
+  border-radius: 24px;
+  padding: 1rem;
+  max-width: 360px;
+  margin: 2rem auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  left: 5%;
+}
+
+#calculator-container .display {
+  background-color: rgb(255, 255, 255);
+  color: rgb(51, 51, 51);
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  text-align: right;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+#calculator-container .buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+#calculator-container button {
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 16px;
+  background-color: rgb(255, 204, 128); /* orange clair */
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#calculator-container button:hover {
+  background-color: rgb(255, 183, 77); /* orange plus vif */
+}
+
+#calculator-container button:active {
+  transform: scale(0.95);
+}
+
+/*************** Questions ************************/
+
+.questions-container {
+    margin: 30px;
+}
+
+h4 {
+    margin: 1% 0;
+    color: rgb(255, 98, 59);
+    font-size: 1.2rem;
+}
+
+.s1 , .s2 {
+    margin: 2%;
+}
+
+h5 {
+    margin: 1% 0;
+    color: rgb(255, 98, 59);
+    font-size: 1.1rem;
+}
+
+input {
+    margin: 1%;
+}
+
+/*******************************************************
+FOOTER
+*******************************************************/
+
+.footer-site {
+    height: 10vh;
+    background-color: rgba(255, 30, 0, 0.8);
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 0;
+    width: 100%;
+    color: rgb(255, 255, 255);
+}
+
+.copyright-site {
+    margin: 10px;
+}
