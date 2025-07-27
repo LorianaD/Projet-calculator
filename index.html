@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le petit MathoGénie</title>
     <link rel="stylesheet" href="asset/style/style.css">
-    <script src="asset/js/script.js"></script>
+    <script src="asset/js/script.js" defer></script>
 </head>
 <body>
     <header class="header-site">
@@ -17,11 +17,43 @@
                 <li class="nav-list-item"><a href="#" class="nav-list-item-link">Cours</a></li>
             </ul>
         </nav>
+        <div id="menu-burger">
+            <img src="asset/img/menu-burger.png" alt="menu burger" class="burger">
+        </div>
     </header>
     <main>
         <section class="titleContainer">
             <h2>Géometrie</h2>
             <h3>Les longueurs, les périmetres et les aires.</h3>
+
+            <!-- Bouton pour ouvrir le modale -->
+            <button id="open-modal">Mémo</button>
+            <!-- Modale caché -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h4>L’aire et le périmètre</h4>
+
+                    <h5>1. Le périmètre</h5>
+                    <p>Le périmètre, c’est la longueur du contour d’une figure.</p>
+                    <ul>
+                        <li>Carré : <strong>4 x côté</strong></li>
+                        <li>Rectangle : <strong>2 x (longueur + largeur)</strong></li>
+                        <li>Triangle : <strong>côté + côté + base</strong></li>
+                    </ul>
+                    <p><em>Exemple :</em> Un carré de 5 cm → 5 + 5 + 5 + 5 = <strong>20 cm</strong></p>
+
+                    <h5>2. L’aire (surface)</h5>
+                    <p>L’aire, c’est la place que prend une figure sur une surface<br>(comme le sol, une feuille...)</p>
+                    <ul>
+                        <li>Carré : <strong>côté x côté</strong></li>
+                        <li>Rectangle : <strong>longueur x largeur</strong></li>
+                        <li>Triangle : <strong>(base x hauteur) ÷ 2</strong></li>
+                    </ul>
+                    <p><em>Exemple :</em> Un rectangle de 6 cm sur 4 cm → 6 x 4 = <strong>24 cm²</strong></p>
+                </div>
+            </div>
+
         </section>
 
         <section id="calculator-container">
@@ -40,12 +72,13 @@
                 <button onclick="press('7')">7</button>
                 <button onclick="press('8')">8</button>
                 <button onclick="press('9')">9</button>
-                <button onclick="press('*')">x</button>
+                <button onclick="press('*')">&times</button>
 
                 <button onclick="clearDisplay()">C</button>
                 <button onclick="press('0')">0</button>
-                <button onclick="calculate()">=</button>
-                <button onclick="press('/')">÷</button>
+                <button onclick="press('.')">.</button>
+                <button onclick="press('/')">&divide</button>
+                <button onclick="calculate()" class="equal">=</button>
             </div>
         </section>
 
@@ -54,70 +87,71 @@
             <ol>
                 <li class="s1 q1">
                     <label for="r1"><img src="" alt="">Un carré a des côtés de 3 cm. Quel est son périmètre ?</label><br>
-                    <input type="number" name="r1" id="r1"><br>
+                    <input type="number" name="r1" id="r1" class="answearQ"><button onclick="s1q1" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s1 q2">
                     <label for="r2">Un rectangle mesure 6 cm de long et 2 cm de large. Quel est son périmètre ?</label><br>
-                    <input type="number" name="r2" id="r2"><br>
+                    <input type="number" name="r2" id="r2" class="answearQ"><button onclick="s1q2" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s1 q3">
                     <label for="r3">Quel est le périmètre d’un triangle équilatéral dont chaque côté mesure 5 cm ?</label><br>
-                    <input type="number" name="r3" id="r3"><br>
+                    <input type="number" name="r3" id="r3" class="answearQ"><button onclick="s1q3" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s1 q4">
                     <label for="r4">Un carré a un côté de 10 cm. Combien mesure le contour du carré ?</label><br>
-                    <input type="number" name="r4" id="r4"><br>
+                    <input type="number" name="r4" id="r4" class="answearQ"><button onclick="s1q4" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s1 q5">
                     <label for="r5">Quel est le périmètre d’un carré dont le côté mesure 6 cm ?</label><br>
-                    <input type="number" name="r5" id="r5"><br>
+                    <input type="number" name="r5" id="r5" class="answearQ"><button onclick="s1q5" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s1 q6">
                     <label for="r6">Un rectangle mesure 5 cm de large et 9 cm de long. Quel est son périmètre ?</label><br>
-                    <input type="number" name="r6" id="r6"><br>
+                    <input type="number" name="r6" id="r6" class="answearQ"><button onclick="s1q6" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s1 q7">
                     <label for="r7">Un triangle a des côtés de 3 cm, 4 cm et 5 cm. Quel est son périmètre ?</label><br>
-                    <input type="number" name="r7" id="r7"><br>
+                    <input type="number" name="r7" id="r7" class="answearQ"><button onclick="s1q7" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s1 q8">
                     <label for="r8">Une corde mesure 15 cm et on l’utilise pour entourer un carré. Quelle est la longueur d’un côté ?</label><br>
-                    <input type="number" name="r8" id="r8"><br>
+                    <input type="number" name="r8" id="r8" class="answearQ"><button onclick="s1q8" class="btn-check">Vérifier</button>
                 </li>
             </ol>
+
+            <h5 class="tf-title">Vrai ou Faux.</h5> <!-- les class tf et vf sont pour true or false et vrai ou faux -->
             <ol>
-                <h5 class="tf-title">Vrai ou Faux.</h5> <!-- les class tf et vf sont pour true or false et vrai ou faux -->
                 <li class="s1 vf1">
                     <p>Le périmètre d’un carré de 5 cm est 20 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true1" id="true1s1" class="trueOrFalse"><label for="true1">vrai</label><input type="radio" name="false1" id="false1s1" class="trueOrFalse"><label for="false1">faux</label>
                 </li>
                 <li class="s1 vf2">
                     <p>Le périmètre d’un rectangle de 4 cm x 3 cm est 14 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true2" id="true2s1" class="trueOrFalse"><label for="true2">vrai</label><input type="radio" name="false2" id="false2s1" class="trueOrFalse"><label for="false2">faux</label>
                 </li>
                 <li class="s1 vf3">
                     <p>Le périmètre d’un triangle avec des côtés de 3 cm, 4 cm et 5 cm est 12 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true3" id="true3s1" class="trueOrFalse"><label for="true3">vrai</label><input type="radio" name="false3" id="false3s1" class="trueOrFalse"><label for="false3">faux</label>
                 </li>
                 <li class="s1 vf4">
                     <p>Un carré de 6 cm de côté a un périmètre de 36 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true4" id="true4s1" class="trueOrFalse"><label for="true4">vrai</label><input type="radio" name="false4" id="false4s1" class="trueOrFalse"><label for="false4">faux</label>
                 </li>
                 <li class="s1 vf5">
                     <p>Le périmètre d’un rectangle de 7 cm x 2 cm est 18 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true5" id="true5s1" class="trueOrFalse"><label for="true5">vrai</label><input type="radio" name="false5" id="false5s1" class="trueOrFalse"><label for="false5">faux</label>
                 </li>
                 <li class="s1 vf6">
                     <p>Le périmètre d’un carré de 9 cm est 18 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true6" id="true6s1" class="trueOrFalse"><label for="true6">vrai</label><input type="radio" name="false6" id="false6s1" class="trueOrFalse"><label for="false6">faux</label>
                 </li>
                 <li class="s1 vf7">
                     <p>Un triangle équilatéral (3 côtés égaux) de 5 cm a un périmètre de 15 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true7" id="true7s1" class="trueOrFalse"><label for="true7">vrai</label><input type="radio" name="false7" id="false7s1" class="trueOrFalse"><label for="false7">faux</label>
                 </li>
                 <li class="s1 vf8">
                     <p>Un rectangle de 6 cm x 3 cm a un périmètre de 12 cm.</p>
-                    <input type="radio" name="" id=""><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true8" id="true8s1" class="trueOrFalse"><label for="true8">vrai</label><input type="radio" name="false8" id="false8s1" class="trueOrFalse"><label for="false8">faux</label>
                 </li>
             </ol>
         </section>
@@ -126,71 +160,72 @@
             <h4 class="questions-title">Questions sur les aires (surfaces)</h4>
             <ol>
                 <li class="s2 a1">
-                    <label for="">Un carré a un côté de 4 cm. Quelle est son aire ?</label><br>
-                    <input type="number"><br>
+                    <label for="a1s2">Un carré a un côté de 4 cm. Quelle est son aire ?</label><br>
+                    <input type="number" name="a1s2" id="a1s2" class="answearQ"><button onclick="s2q1" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s2 a2">
-                    <label for="">Un rectangle mesure 5 cm de long et 3 cm de large. Quelle est son aire ?</label><br>
-                    <input type="number"><br>
+                    <label for="a2s2">Un rectangle mesure 5 cm de long et 3 cm de large. Quelle est son aire ?</label><br>
+                    <input type="number" name="a2s2" id="a2s2" class="answearQ"><button onclick="s2q2" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s2 a3">
-                    <label for="">Un triangle a une base de 6 cm et une hauteur de 4 cm. Quelle est son aire ?</label><br>
-                    <input type="number"><br>
+                    <label for="a3s2">Un triangle a une base de 6 cm et une hauteur de 4 cm. Quelle est son aire ?</label><br>
+                    <input type="number" name="a3s2" id="a3s2" class="answearQ"><button onclick="s2q3" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s2 a4">
-                    <label for="">Une classe veut décorer un carré de 2 m de côté. Quelle est la surface à décorer ?</label><br>
-                    <input type="number"><br>
+                    <label for="a4s2">Une classe veut décorer un carré de 2 m de côté. Quelle est la surface à décorer ?</label><br>
+                    <input type="number" name="a4s2" id="a4s2" class="answearQ"><button onclick="s2q4" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s2 a5">
-                    <label for="">Quel est l’aire d’un carré dont le côté mesure 7 cm ?</label><br>
-                    <input type="number" name="" id=""><br>
+                    <label for="a5s2">Quel est l’aire d’un carré dont le côté mesure 7 cm ?</label><br>
+                    <input type="number" name="a5s2" id="a5s2" class="answearQ"><button onclick="s2q5" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s2 a6">
-                    <label for="">Un rectangle mesure 8 cm de long et 3 cm de large. Quelle est son aire ?</label><br>
-                    <input type="number" name="" id=""><br>
+                    <label for="a6s2">Un rectangle mesure 8 cm de long et 3 cm de large. Quelle est son aire ?</label><br>
+                    <input type="number" name="a6s2" id="a6s2" class="answearQ"><button onclick="s2q6" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s2 a7">
-                    <label for="">Quel est l’aire d’un triangle de base 10 cm et de hauteur 6 cm ?</label><br>
-                    <input type="number" name="" id=""><br>
+                    <label for="a7s2">Quel est l’aire d’un triangle de base 10 cm et de hauteur 6 cm ?</label><br>
+                    <input type="number" name="a7s2" id="a7s2" class="answearQ"><button onclick="s2q7" class="btn-check">Vérifier</button>
                 </li>
                 <li class="s2 a8">
-                    <label for="">Un rectangle a une aire de 20 cm². Sa longueur est 5 cm. Quelle est sa largeur ?</label><br>
-                    <input type="number" name="" id=""><br>
+                    <label for="a8s2">Un rectangle a une aire de 20 cm². Sa longueur est 5 cm. Quelle est sa largeur ?</label><br>
+                    <input type="number" name="a8s2" id="a8s2" class="answearQ"><button onclick="s2q8" class="btn-check">Vérifier</button>
                 </li>
             </ol>
+
+            <h5>Vrai ou Faux.</h5>
             <ol>
-                <h5>Vrai ou Faux.</h5>
                 <li class="s2 tf1">
                     <p>L’aire d’un carré de 5 cm de côté est 25 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true1s2" id="true1s2" class="trueOrFalse"><label for="true1s2">vrai</label><input type="radio" name="false1s2" id="false1s2" class="trueOrFalse"><label for="false1s2">faux</label>
                 </li>
                 <li class="s2 tf2">
                     <p>L’aire d’un rectangle de 4 cm de long et 3 cm de large est 12 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true2s2" id="true2s2" class="trueOrFalse"><label for="true2s2">vrai</label><input type="radio" name="false2s2" id="false2s2" class="trueOrFalse"><label for="false2s2">faux</label>
                 </li>
                 <li class="s2 tf3">
                     <p>L’aire d’un triangle de base 6 cm et hauteur 4 cm est 24 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true3s2" id="true3s2" class="trueOrFalse"><label for="true3s2">vrai</label><input type="radio" name="false3s2" id="false3s2" class="trueOrFalse"><label for="false3s2">faux</label>
                 </li>
                 <li class="s2 tf4">
                     <p>L’aire d’un carré de 9 cm est 81 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true4s2" id="true4s2" class="trueOrFalse"><label for="true4s2">vrai</label><input type="radio" name="false4s2" id="false4s2" class="trueOrFalse"><label for="false4s2">faux</label>
                 </li>
                 <li class="s2 tf5">
                     <p>Un triangle avec une base de 10 cm et une hauteur de 6 cm a une aire de 60 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true5s2" id="true5s2" class="trueOrFalse"><label for="true5s2">vrai</label><input type="radio" name="false5s2" id="false5s2" class="trueOrFalse"><label for="false5s2">faux</label>
                 </li>
                 <li class="s2 tf6">
                     <p>L’aire d’un rectangle de 7 cm x 5 cm est 35 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true6s2" id="true6s2" class="trueOrFalse"><label for="true6s2">vrai</label><input type="radio" name="false6s2" id="false6s2" class="trueOrFalse"><label for="false6s2">faux</label>
                 </li>
                 <li class="s2 tf7">
                     <p>L’aire d’un triangle de 8 cm de base et 4 cm de hauteur est 16 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true7s2" id="true7s2" class="trueOrFalse"><label for="true7s2">vrai</label><input type="radio" name="false7s2" id="false7s2" class="trueOrFalse"><label for="false7s2">faux</label>
                 </li>
                 <li class="s2 tf8">
                     <p>L’aire d’un carré de côté 3 cm est 6 cm².</p>
-                    <input type="radio"><label for="">vrai</label><input type="radio"><label for="">faux</label>
+                    <input type="radio" name="true8s2" id="true8s2" class="trueOrFalse"><label for="true8s2">vrai</label><input type="radio" name="false8s2" id="false8s2" class="trueOrFalse"><label for="false8s2">faux</label>
                 </li>
             </ol>
         </section>

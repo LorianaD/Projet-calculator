@@ -14,7 +14,7 @@ a {
 
 
 body {
-    background-image: url(../img/background.jpg);
+    background-image: url(../img/background-4.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
@@ -40,7 +40,7 @@ EN TETE
 .header-title {
     color: rgba(255, 255, 255, 1);
     margin: 30px;
-    width: 33%;
+    width: 100%;
 }
 
 .header-nav {
@@ -73,12 +73,25 @@ EN TETE
     color: rgba(255, 255, 255, 1);
 }
 
+#menu-burger {
+    display: none;
+    width: 40px;
+    position: absolute;
+    transform: translate(-100%, -100%);
+    left: 95%;
+    top: 95%;
+}
+
+.burger {
+    width: 100%;
+}
+
 /*******************************************************
 CORPS
 *******************************************************/
 
 main {
-    width: 50%;
+    width: 46%;
     background-color: rgba(255, 255, 255, 1);
     padding: 1%;
 }
@@ -90,21 +103,93 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: rgb(255, 81, 81);
+
+    text-align: center;
 }
 
 h2 {
     font-size: 2rem;
+    color: rgb(255, 81, 81);
 }
 
 h3 {
     font-size: 1.5rem;
+    color: rgb(255, 81, 81);
+}
+
+/*************** Modale ***********/
+
+#open-modal {
+    position: fixed;
+    transform: translate(-100%, 0);
+    top: 16%;
+    left: 85%;
+    width: 100px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 0.5%;
+}
+
+/* Modale caché */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* fond noir semi-transparent */
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+  animation: popup 0.3s ease;
+  text-align: left;
+}
+
+@keyframes popup {
+
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+}
+
+.modal-content > ul {
+    list-style-type: none;
+}
+
+/* Bouton de fermeture (croix) */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: rgb(100, 100, 100);
 }
 
 /*************** Calculatrice *************************/
 
 #calculator-container {
-  background-color: rgb(122, 120, 255); /* couleur de la calculatrice */
+  background-color: rgb(255, 224, 178); /* orange pastel */
   border-radius: 24px;
   padding: 1rem;
   max-width: 360px;
@@ -150,6 +235,13 @@ h3 {
   transform: scale(0.95);
 }
 
+#calculator-container .equal {
+  grid-column: span 4; /* Le bouton occupe toute la ligne */
+  background-color: rgb(255, 138, 101); /* orange plus intense */
+  color: white;
+  font-weight: bold;
+}
+
 /*************** Questions ************************/
 
 .questions-container {
@@ -172,8 +264,26 @@ h5 {
     font-size: 1.1rem;
 }
 
-input {
+.answearQ {
     margin: 1%;
+    border-radius: 7px;
+    border-style: none;
+    box-shadow: 1px 1px 2px 1px rgba(184, 184, 184, 1);
+}
+
+.btn-check {
+    background-color: rgb(255, 224, 178);
+    border-style: none;
+    border-radius: 10px;
+    width: 100px;
+    padding: 2px;
+    margin: 0 1%;
+    color: rgb(255, 0, 0);
+    box-shadow: 1px 1px 2px 1px rgba(184, 184, 184, 1);
+}
+
+.trueOrFalse {
+    margin: 2% 1% 1% 1%;
 }
 
 /*******************************************************
@@ -194,4 +304,28 @@ FOOTER
 
 .copyright-site {
     margin: 10px;
+}
+
+/********************************************************
+QUERY MEDIA : RESPONSIVE
+********************************************************/
+
+@media (max-width : 1024px) {
+    main {
+        width: 100%;
+    }
+
+    #calculator-container {
+        position: relative;
+        left: auto;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    #menu-burger {
+        display: block;
+    }
+
 }
