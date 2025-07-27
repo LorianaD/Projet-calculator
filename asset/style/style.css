@@ -123,13 +123,18 @@ h3 {
     position: fixed;
     transform: translate(-100%, 0);
     top: 16%;
-    left: 85%;
+    left: 96%;
     width: 100px;
     border-radius: 10px;
     border-style: none;
     background-color: rgb(255, 0, 0);
     color: rgb(255, 255, 255);
     padding: 0.5%;
+    z-index: 3;
+}
+
+#open-modal:hover {
+    background-color: rgb(216, 0, 0);
 }
 
 /* Modale caché */
@@ -143,7 +148,7 @@ h3 {
   background-color: rgba(0, 0, 0, 0.5); /* fond noir semi-transparent */
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  z-index: 9;
 }
 
 /* Contenu de la modale */
@@ -280,6 +285,10 @@ h5 {
     margin: 0 1%;
     color: rgb(255, 0, 0);
     box-shadow: 1px 1px 2px 1px rgba(184, 184, 184, 1);
+}
+
+.btn-check:hover {
+    background-color: rgb(252, 202, 125);
 }
 
 .trueOrFalse {
