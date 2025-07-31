@@ -3,48 +3,46 @@
 // On récupère l'élément HTML qui affiche le résultat
 let display = document.getElementById("display");
 
-// Fonction appelée quand on appuie sur un chiffre ou un symbole (ex : 1, 2, +, -)
+// Fonction quand on appuie sur un chiffre, un symbole ou un point
 function press(value) {
+  let current = display.innerText;
+  let lastChar = current.charAt(current.length - 1);
 
-  // Si l'utilisateur appuie sur ".", on vérifie qu'on n'en a pas déjà mis un dans le nombre en cours
-  if (value === ".") {
-    let current = display.innerText;
-    let parts = current.split(/[\+\-\*\/]/); // on découpe autour des opérateurs
-    let lastPart = parts[parts.length - 1]; // on regarde le dernier nombre
-
-    if (lastPart.includes(".")) {
-      return; // si le dernier nombre a déjà un point, on ne fait rien
+  // Si l'affichage est 0 et qu'on tape un chiffre
+  if (current === "0" && "0123456789".includes(value)) {
+    display.innerText = value;
+  }
+  // Si on appuie sur un opérateur (+ - * /)
+  else if ("+-*/".includes(value)) {
+    // On empêche deux opérateaurs d'affilée
+    if (!"+-*/".includes(lastChar)) {
+      display.innerText += value;
+    }
+  }
+  // Si on appuie sur un point
+  else if (value ===".") {
+    // On empêche deux points d'affilée
+    if (lastChar !== ".") {
+      display.innerText += value;
     }
   }
 
-  // Si l'affichage est encore à zéro, on le remplace par le nouveau chiffre/symbole
-  if (display.innerText === "0") {
-    display.innerText = value;
-  } else {
-    // Sinon, on ajoute ce qu'on a tapé à la suite (concaténation de texte)
+  // Sinon on ajoute la valeur normalement
+  else {
     display.innerText += value;
   }
 }
 
-// Fonction qui remet l'affichage à zéro quand on clique sur "C"
+// Fonction pour effacer
 function clearDisplay() {
   display.innerText = "0";
 }
 
-// Fonction qui calcule le résultat de l'opération affichée
+// Fonction pour calculer le résultat
 function calculate() {
-  try {
-    console.log("calcul :", display.innerText);
-    // eval() permet de calculer une expression écrite sous forme de texte
-    // Exemple : "2+3" devient 5
-    let result = eval(display.innerText);
-
-    // On affiche le résultat sur l'écran
-    display.innerText = result;
-  } catch (e) {
-    // Si une erreur se produit (ex: "2++"), on affiche "Erreur"
-    display.innerText = "Erreur";
-  }
+  let expression = display.innerText;
+  let result = eval (expression); // eval permet de faire un calcul. Il permet de transformer afin de faire 1+1=2, au lieu de 1+1=11.
+  display.innerText = result;
 }
 
 ////////////// COMMANDE DU MODAL /////////////////////
@@ -84,15 +82,62 @@ window.addEventListener("click", (event) => closeModale(event));
 
 ////////////// QUESTIONAIRE //////////////////////////
 
-let answear;
+/* question = reponse juste,
+  s1q1: 12,
+  s1q2: 16,
+  s1q3: 15,
+  s1q4: 40,
+  s1q5: 24,
+  s1q6: 28,
+  s1q7: 12,
+  s1q8: 3.75,
 
-function s1q1(answear) {
-  answear = document.getElementById("r1");
-  if(answear == 12) {
-    answear.document.innerText("Bravo ! Tu as réussi ! 👏");
+  s2q1: 16,
+  s2q2: 15,
+  s2q3: 12,
+  s2q4: 4,
+  s2q5: 49,
+  s2q6: 24,
+  s2q7: 30,
+  s2q8: 4,
+*/
+
+function btnCheck(idChamp, goodAnswer) { /* idChamp = à l'id que l'on doit vérifier ex. 's1q1' pour la premiere question */
+  let champ = document.getElementById(idChamp);
+  let msg = document.getElementById("msg-" + idChamp);
+  let valeur = champ.value.trim(); /* trim() permet d'effacer les espaces, et ainsi evité des fause erreur.*/
+
+  if (valeur === goodAnswer) {
+    msg.textContent = "✅ Bravo ! Tu as réussi ! 👏";
+    msg.style.color = "green";
   } else {
-    answear.document.InnerText("Essai encore ☹️");
+    msg.textContent = "❌ Essaie encore 🙁";
+    msg.style.color = "crimson";
   }
 }
 
-s1q1(answear);
+// vrai ou faux //
+
+function btnCheckvf(questionName, correctAnswer) {
+  const radios = document.getElementsByName(questionName);
+  const message = document.getElementById("msgvf-" + questionName); // ex: msgvf-s1a1
+  let selectedValue = "";
+
+  for (let i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      selectedValue = radios[i].id.includes("true") ? "vrai" : "faux";
+      break;
+    }
+  }
+
+  if (selectedValue === "") {
+    message.textContent = "S'il te plaît, choisis une option.";
+    message.style.color = "orange";
+  } else if (selectedValue === correctAnswer) {
+    message.textContent = "✅ Bravo ! Tu as réussi ! 👏";
+    message.style.color = "green";
+  } else {
+    message.textContent = "❌ Essaie encore 🙁";
+    message.style.color = "crimson";
+  }
+}
