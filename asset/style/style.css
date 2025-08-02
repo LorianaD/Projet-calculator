@@ -247,10 +247,28 @@ h3 {
 }
 
 #calculator-container .equal {
-  grid-column: span 4; /* Le bouton occupe toute la ligne */
-  background-color: rgb(255, 138, 101); /* orange plus intense */
-  color: white;
+  grid-column: span 3; /* Le bouton occupe 3 cases sur la ligne */
+  background-color: rgb(255, 176, 58);
   font-weight: bold;
+}
+
+#calculator-container .equal:hover {
+  grid-column: span 3; /* Le bouton occupe 3 cases sur la ligne */
+  background-color: rgb(255, 153, 0);
+}
+
+#calculator-container .plus {
+    grid-row: span 2;
+}
+
+#calculator-container .delet {
+    background-color: rgb(255, 81, 81);
+    color: rgb(255, 255, 255);
+}
+
+#calculator-container .delet:hover {
+    background-color: rgb(255, 24, 24);
+    color: rgb(255, 255, 255);
 }
 
 /*************** Questions ************************/
