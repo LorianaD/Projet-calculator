@@ -6,7 +6,7 @@ let display = document.getElementById("display");
 // Fonction quand on appuie sur un chiffre, un symbole ou un point
 function press(value) {
   let current = display.innerText;
-  let lastChar = current.charAt(current.length - 1);
+  let lastChar = current.charAt(current.length - 1); // charAt pour regarder le dernier caractère. length donne le nombre de lettres dans un mot, ou le nombre d'éléments dans un tableau
 
   // Si l'affichage est 0 et qu'on tape un chiffre
   if (current === "0" && "0123456789".includes(value)) {
@@ -21,7 +21,7 @@ function press(value) {
   }
   // Si on appuie sur un point
   else if (value ===".") {
-    // On empêche deux points d'affilée
+    // Permet d'eviter deux points d'affilée
     if (lastChar !== ".") {
       display.innerText += value;
     }
@@ -42,6 +42,11 @@ function clearDisplay() {
 function calculate() {
   let expression = display.innerText;
   let result = eval (expression); // eval permet de faire un calcul. Il permet de transformer afin de faire 1+1=2, au lieu de 1+1=11.
+  
+  // On arrondit le résultat à 2 chiffres après la virgule
+  // Puis on convertit en nombre pour éviter que ce soit une chaîne
+  result = Number(result.toFixed(2));
+
   display.innerText = result;
 }
 
@@ -67,7 +72,7 @@ function hideModal(modal) {
 
 closeBtn.addEventListener("click", () => hideModal(modal));
 
-// Optionnel : ferme la modale si on clique en dehors
+// Optionnel : ferme la modale si on clique en dehors de la fenêtre
 
 function closeModale(event) {
 
